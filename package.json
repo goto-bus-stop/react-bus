@@ -36,6 +36,7 @@
     "build": "npm run build:es && npm run build:cjs",
     "build:cjs": "ascjs index.js | buble --no modules --objectAssign Object.assign -o index.cjs.js",
     "build:es": "buble --no modules --objectAssign Object.assign index.js -o index.es.js",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "node test"
   }
 }
