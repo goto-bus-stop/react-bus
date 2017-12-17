@@ -38,6 +38,12 @@ const Input = withBus()(({ bus }) => {
 })
 ```
 
+## Install
+
+```
+npm install react-bus
+```
+
 ## API
 
 ### `<Provider />`
