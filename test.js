@@ -1,8 +1,8 @@
 var test = require('tape')
 var React = require('react')
 var TestRenderer = require('react-test-renderer')
-var Provider = require('.').Provider
-var withBus = require('.').withBus
+var Provider = require('./index.cjs').Provider
+var withBus = require('./index.cjs').withBus
 
 var h = React.createElement
 
