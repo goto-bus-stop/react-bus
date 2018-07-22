@@ -1,32 +1,34 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import mitt from 'mitt'
 
-const contextTypes = { reactBus: PropTypes.object }
+const h = React.createElement
+const Context = React.createContext()
 
 export function withBus (name = 'bus') {
   return function decorate (BaseComponent) {
-    function WithBus (props, context) {
-      return React.createElement(BaseComponent, {
-        ...props,
-        [name]: context.reactBus
-      })
+    return function WithBus (props, context) {
+      return h(
+        Context.Consumer,
+        {},
+        bus => h(BaseComponent, {
+          ...props,
+          [name]: bus
+        })
+      )
     }
-    WithBus.contextTypes = contextTypes
-    return WithBus
   }
 }
 
 export class Provider extends React.Component {
   constructor (props) {
     super(props)
-    this.bus = mitt()
-  }
-  getChildContext () {
-    return { reactBus: this.bus }
+    this.state = { bus: mitt() }
   }
   render () {
-    return this.props.children
+    return h(
+      Context.Provider,
+      { value: this.state.bus },
+      this.props.children
+    )
   }
 }
-Provider.childContextTypes = contextTypes
