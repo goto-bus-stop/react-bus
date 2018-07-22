@@ -11,6 +11,18 @@ react-bus contains a `<Provider />` component and a `withBus` decorator.
 `withBus()` takes the event emitter from context and passes it to the decorated component as the `bus` prop.
 
 ```js
+import { Provider, withBus } from 'react-bus'
+// Inject `bus` prop to <Component />.
+const ConnectedComponent = withBus()(Component)
+
+<Provider>
+  <ConnectedComponent />
+</Provider>
+```
+
+For example, to communicate "horizontally" between otherwise unrelated components:
+
+```js
 import { Provider as BusProvider, withBus } from 'react-bus'
 const App = () => (
   <BusProvider>
@@ -37,6 +49,8 @@ const Input = withBus()(({ bus }) => {
   }
 })
 ```
+
+This may be easier to implement and understand than lifting the scroll state up into a global store.
 
 ## Install
 
