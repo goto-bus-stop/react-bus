@@ -52,6 +52,28 @@ const Input = withBus()(({ bus }) => {
 
 This may be easier to implement and understand than lifting the scroll state up into a global store.
 
+There is a `Listener` component that will add and remove events when mounted and unmounted.
+The ScrollBox component above could be written as:
+
+```js
+import Listener from 'react-bus/listener'
+
+class ScrollBox extends React.Component {
+  onScroll = (top) => {
+    this.el.scrollTop += top
+  }
+
+  render () {
+    return (
+      <div ref={(el) => this.el = el}>
+        <Listener scroll={this.onScroll} />
+        {/* other children */}
+      </div>
+    )
+  }
+}
+```
+
 ## Install
 
 ```
@@ -67,6 +89,12 @@ Create an event emitter that will be available to all deeply nested child elemen
 ### `withBus(name='bus')(Component)`
 
 Wrap `Component` and inject the event emitter as a prop named `name`.
+
+### `<Listener name={handler} />
+
+When mounted, add a listener to the global `bus` for the event named `name`. When unmounting, remove the listener. Multiple event handlers can be added at once by passing different props. You can use this component to avoid having to manually use `withBus()` and manually manage listeners on mount and unmount.
+
+Note that prop names do _not_ include an `on` prefix.
 
 ## License
 

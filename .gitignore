@@ -1,4 +1,3 @@
 node_modules
-index.cjs.js
-index.es.js
+dist
 package-lock.json

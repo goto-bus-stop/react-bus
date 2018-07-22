@@ -1,14 +1,14 @@
 import React from 'react'
 import mitt from 'mitt'
+import { Consumer, Provider as BaseProvider } from './context'
 
 const h = React.createElement
-const Context = React.createContext()
 
 export function withBus (name = 'bus') {
   return function decorate (BaseComponent) {
-    return function WithBus (props, context) {
+    return function WithBus (props) {
       return h(
-        Context.Consumer,
+        Consumer,
         {},
         bus => h(BaseComponent, {
           ...props,
@@ -26,7 +26,7 @@ export class Provider extends React.Component {
   }
   render () {
     return h(
-      Context.Provider,
+      BaseProvider,
       { value: this.state.bus },
       this.props.children
     )
