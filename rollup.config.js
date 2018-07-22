@@ -1,3 +1,4 @@
+import del from 'rollup-plugin-delete'
 import buble from 'rollup-plugin-buble'
 
 const pkg = require('./package.json')
@@ -18,5 +19,8 @@ export default {
     interop: false
   }],
   external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],
-  plugins: [buble({ objectAssign: 'Object.assign' })]
+  plugins: [
+    del({ targets: ['dist', 'index.*', 'listener.*'] }),
+    buble({ objectAssign: 'Object.assign' })
+  ]
 }
