@@ -1,3 +1,7 @@
 node_modules
 dist
+/index.js
+/index.mjs
+/listener.js
+/listener.mjs
 package-lock.json

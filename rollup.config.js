@@ -6,15 +6,15 @@ export default {
   input: ['./src/index.js', './src/listener.js'],
   experimentalCodeSplitting: true,
   output: [{
-    dir: './dist',
+    dir: './',
     format: 'es',
     entryFileNames: '[name].mjs',
-    chunkFileNames: '[hash].mjs'
+    chunkFileNames: 'dist/chunk-[hash].mjs'
   }, {
-    dir: './dist',
+    dir: './',
     format: 'cjs',
     entryFileNames: '[name].js',
-    chunkFileNames: '[hash].js',
+    chunkFileNames: 'dist/chunk-[hash].js',
     interop: false
   }],
   external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.peerDependencies)],

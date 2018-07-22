@@ -28,8 +28,8 @@
     "react"
   ],
   "license": "MIT",
-  "main": "dist/index",
-  "module": "dist/index",
+  "main": "index",
+  "module": "index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goto-bus-stop/react-bus.git"
