@@ -1,6 +1,6 @@
 # react-bus
 
-A global event emitter for React apps.
+A global [event emitter](https://github.com/developit/mitt) for React apps.
 Useful if you need some user interaction in one place trigger an action in another place on the page, such as scrolling a logging element when pressing PageUp/PageDown in an input element (without having to store scroll position in state).
 
 ## Usage
@@ -25,7 +25,7 @@ function ConnectedComponent () {
 For example, to communicate "horizontally" between otherwise unrelated components:
 
 ```js
-import { Provider as BusProvider, useBus } from 'react-bus'
+import { Provider as BusProvider, useBus, useListener } from 'react-bus'
 const App = () => (
   <BusProvider>
     <ScrollBox />
@@ -34,16 +34,12 @@ const App = () => (
 )
 
 function ScrollBox () {
-  const bus = useBus()
   const el = React.useRef(null)
-
-  React.useEffect(() => {
-    function onscroll (top) {
-      el.current.scrollTop += top
-    }
-    bus.on('scroll', onscroll)
-    return () => bus.off('scroll', onscroll)
+  const onscroll = React.useCallback(function (top) {
+    el.current.scrollTop += top
   }, [])
+
+  useListener('scroll', onscroll)
 
   return <div ref={el}></div>
 }
@@ -77,6 +73,10 @@ Create an event emitter that will be available to all deeply nested child elemen
 ### `const bus = useBus()`
 
 Return the event emitter.
+
+### `useListener(name, fn)`
+
+Attach an event listener to the bus while this component is mounted. Adds the listener _after_ mount, and removes it before unmount.
 
 ## License
 
