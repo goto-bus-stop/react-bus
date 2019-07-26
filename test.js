@@ -2,7 +2,7 @@ var test = require('tape')
 var React = require('react')
 var TestRenderer = require('react-test-renderer')
 var Provider = require('./').Provider
-var withBus = require('./').withBus
+var useBus = require('./').useBus
 
 var h = React.createElement
 
@@ -12,14 +12,14 @@ test('emits events on context', function (t) {
   function onhello () {
     onhello.called = true
   }
-  var Emitter = withBus()(function (props) {
-    props.bus.emit('hello')
+  function Emitter (props) {
+    useBus().emit('hello')
     return h('div')
-  })
-  var Listener = withBus()(function (props) {
-    props.bus.on('hello', onhello)
+  }
+  function Listener (props) {
+    useBus().on('hello', onhello)
     return h('div')
-  })
+  }
 
   var renderer = TestRenderer.create(
     h(Provider, {},

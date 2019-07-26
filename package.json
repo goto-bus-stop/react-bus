@@ -11,13 +11,13 @@
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "react": ">= 16.0.0"
+    "react": ">= 16.8.0"
   },
   "devDependencies": {
     "ascjs": "^2.4.0",
     "buble": "^0.18.0",
-    "react": "^16.2.0",
-    "react-test-renderer": "^16.2.0",
+    "react": "^16.8.0",
+    "react-test-renderer": "^16.8.0",
     "tape": "^4.8.0"
   },
   "homepage": "https://github.com/goto-bus-stop/react-bus#readme",

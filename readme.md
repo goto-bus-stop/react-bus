@@ -5,15 +5,17 @@ Useful if you need some user interaction in one place trigger an action in anoth
 
 ## Usage
 
-react-bus contains a `<Provider />` component and a `withBus` decorator.
+react-bus contains a `<Provider />` component and a `useBus` hook.
 
 `<Provider />` creates an event emitter and places it on the context.
-`withBus()` takes the event emitter from context and passes it to the decorated component as the `bus` prop.
+`useBus()` returns the event emitter from context.
 
 ```js
-import { Provider, withBus } from 'react-bus'
-// Inject `bus` prop to <Component />.
-const ConnectedComponent = withBus()(Component)
+import { Provider, useBus } from 'react-bus'
+// Use `bus` in <Component />.
+function ConnectedComponent () {
+  const bus = useBus()
+}
 
 <Provider>
   <ConnectedComponent />
@@ -23,31 +25,39 @@ const ConnectedComponent = withBus()(Component)
 For example, to communicate "horizontally" between otherwise unrelated components:
 
 ```js
-import { Provider as BusProvider, withBus } from 'react-bus'
+import { Provider as BusProvider, useBus } from 'react-bus'
 const App = () => (
   <BusProvider>
     <ScrollBox />
     <Input />
   </BusProvider>
 )
-const ScrollBox = withBus()(class extends React.Component {
-  onScroll = (top) => {
-    this.el.scrollTop += top
-  }
-  componentDidMount () { this.props.bus.on('scroll', this.onScroll) }
-  componentWillUnmount () { this.props.bus.off('scroll', this.onScroll) }
-  render () {
-    return <div ref={(el) => this.el = el}></div>
-  }
-})
+
+function ScrollBox () {
+  const bus = useBus()
+  const el = React.useRef(null)
+
+  React.useEffect(() => {
+    function onscroll (top) {
+      el.current.scrollTop += top
+    }
+    bus.on('scroll', onscroll)
+    return () => bus.off('scroll', onscroll)
+  }, [])
+
+  return <div ref={el}></div>
+}
+
 // Scroll the ScrollBox when pageup/pagedown are pressed.
-const Input = withBus()(({ bus }) => {
+function Input () {
+  const bus = useBus()
   return <input onKeyDown={onkeydown} />
+
   function onkeydown (event) {
     if (event.key === 'PageUp') bus.emit('scroll', -200)
     if (event.key === 'PageDown') bus.emit('scroll', +200)
   }
-})
+}
 ```
 
 This may be easier to implement and understand than lifting the scroll state up into a global store.
@@ -62,11 +72,11 @@ npm install react-bus
 
 ### `<Provider />`
 
-Create an event emitter that will be available to all deeply nested child elements using the `withBus()` function.
+Create an event emitter that will be available to all deeply nested child elements using the `useBus()` hook.
 
-### `withBus(name='bus')(Component)`
+### `const bus = useBus()`
 
-Wrap `Component` and inject the event emitter as a prop named `name`.
+Return the event emitter.
 
 ## License
 
