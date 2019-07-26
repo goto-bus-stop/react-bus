@@ -7,7 +7,7 @@ var useListener = require('./').useListener
 
 var h = React.createElement
 
-test('emits events on context', async function (t) {
+test('emits events on context', function (t) {
   t.plan(1)
 
   function onhello () {
