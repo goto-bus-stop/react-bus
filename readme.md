@@ -1,5 +1,8 @@
 # react-bus
 
+[![npm](https://badgen.net/npm/v/react-bus)](https://npmjs.com/package/react-bus)
+[![bundlephobia](https://badgen.net/bundlephobia/minzip/react-bus)](https://bundlephobia.com/result?p=react-bus)
+
 A global [event emitter](https://github.com/developit/mitt) for React apps.
 Useful if you need some user interaction in one place trigger an action in another place on the page, such as scrolling a logging element when pressing PageUp/PageDown in an input element (without having to store scroll position in state).
 
