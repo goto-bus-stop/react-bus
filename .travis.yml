@@ -1,5 +1,4 @@
 language: node_js
-before_script: npm run prepare
 node_js:
   - "stable"
   - "10"
