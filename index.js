@@ -10,10 +10,8 @@ export function useBus () {
 export function useListener (name, fn) {
   const bus = useBus()
   React.useEffect(() => {
-    console.log('on', name)
     bus.on(name, fn)
     return () => {
-      console.log('off', name)
       bus.off(name, fn)
     }
   }, [bus, name, fn])
