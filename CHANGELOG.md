@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.1
+* Remove `console.log`s.
+
 ## 2.0.0
 * Remove `withBus()`.
 * Add `useBus()` hook.
