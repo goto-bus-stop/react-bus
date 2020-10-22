@@ -13,8 +13,8 @@
     "react": ">= 16.8.0"
   },
   "devDependencies": {
-    "react": "^16.9.0",
-    "react-test-renderer": "^16.9.0",
+    "react": "^17.0.0",
+    "react-test-renderer": "^17.0.0",
     "rollup": "^2.0.1",
     "rollup-plugin-buble": "^0.19.8",
     "tape": "^5.0.1"

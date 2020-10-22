@@ -5,3 +5,9 @@ node_js:
   - "stable"
   - "12"
   - "10"
+
+jobs:
+  include:
+    - node_js: 12
+      before_script:
+        npm install react@16 react-test-renderer@16
