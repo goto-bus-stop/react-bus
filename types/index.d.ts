@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { Emitter, EventHandlerMap, WildcardHandler } from 'mitt';
+import { Emitter, EventType, Handler } from 'mitt';
 export declare const BusContext: React.Context<Emitter | null>;
 /**
  * Return the event emitter.
@@ -13,18 +13,17 @@ export declare function useBus(): Emitter;
  *
  * @export
  * @param {string} name
- * @param {WildcardHandler} fn
+ * @param {Handler} fn
  */
-export declare function useListener(name: string, fn: WildcardHandler): void;
+export declare function useListener<T = any>(name: EventType, fn: Handler<T>): void;
 export interface ProviderProps {
     children?: ReactNode;
-    mittOptions?: EventHandlerMap;
 }
 /**
  * Create an event emitter that will be available to all deeply nested child elements using the useBus() hook.
  *
  * @export
- * @param {ProviderProps} { children, mittOptions }
+ * @param {ProviderProps} { children }
  * @return {*}
  */
 export declare const Provider: FC<ProviderProps>;
