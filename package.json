@@ -8,7 +8,7 @@
     "url": "https://github.com/goto-bus-stop/react-bus/issues"
   },
   "dependencies": {
-    "mitt": "^2.1.0"
+    "mitt": "^3.0.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0"
