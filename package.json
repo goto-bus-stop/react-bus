@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/react": "^18.0.8",
-    "mitt": "^2.1.0"
+    "mitt": "^3.0.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0"
