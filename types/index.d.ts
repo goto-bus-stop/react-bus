@@ -1,29 +1,23 @@
-import React, { FC, ReactNode } from 'react';
-import { Emitter, EventType, Handler } from 'mitt';
-export declare const BusContext: React.Context<Emitter | null>;
 /**
  * Return the event emitter.
  *
- * @export
- * @return {*}
+ * @return {import('mitt').Emitter}
  */
-export declare function useBus(): Emitter;
+export function useBus(): import('mitt').Emitter;
 /**
  * Attach an event listener to the bus while this component is mounted. Adds the listener after mount, and removes it before unmount.
- *
- * @export
- * @param {string} name
- * @param {Handler} fn
+
+ * @param {import('mitt').EventType} name
+ * @param {import('mitt').Handler} listener
  */
-export declare function useListener<T = any>(name: EventType, fn: Handler<T>): void;
-export interface ProviderProps {
-    children?: ReactNode;
-}
+export function useListener(name: import('mitt').EventType, listener: import('mitt').Handler): void;
 /**
  * Create an event emitter that will be available to all deeply nested child elements using the useBus() hook.
  *
- * @export
- * @param {ProviderProps} { children }
- * @return {*}
+ * @param {{ children?: import('react').ReactNode }} props
  */
-export declare const Provider: FC<ProviderProps>;
+export function Provider({ children }: {
+    children?: import('react').ReactNode;
+}): JSX.Element;
+export const BusContext: React.Context<import("mitt").Emitter | null>;
+import React from "react";

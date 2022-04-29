@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015"],
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "jsx": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "types"
+  },
+  "files": ["index.js"]
+}
