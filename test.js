@@ -1,4 +1,6 @@
-var test = require('tape')
+'use strict'
+var test = require('node:test')
+var assert = require('node:assert')
 var React = require('react')
 var TestRenderer = require('react-test-renderer')
 var Provider = require('./').Provider
@@ -7,9 +9,7 @@ var useListener = require('./').useListener
 
 var h = React.createElement
 
-test('emits events on context', function (t) {
-  t.plan(1)
-
+test('emits events on context', function () {
   function onhello () {
     onhello.called = true
   }
@@ -34,13 +34,11 @@ test('emits events on context', function (t) {
     )
   })
 
-  t.ok(onhello.called)
+  assert(onhello.called)
   renderer.unmount()
 })
 
-test('useListener', function (t) {
-  t.plan(2)
-
+test('useListener', function () {
   function onhello () {
     onhello.called = true
   }
@@ -68,7 +66,7 @@ test('useListener', function (t) {
     )
   })
 
-  t.ok(onhello.called)
+  assert(onhello.called)
   onhello.called = false
   TestRenderer.act(function () {
     renderer.update(
@@ -79,7 +77,7 @@ test('useListener', function (t) {
       )
     )
   })
-  t.notOk(onhello.called)
+  assert(!onhello.called)
 
   renderer.unmount()
 })
