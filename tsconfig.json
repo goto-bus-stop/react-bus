@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2015"],
+    "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
@@ -10,5 +11,5 @@
     "esModuleInterop": true,
     "outDir": "types"
   },
-  "files": ["index.js"]
+  "files": ["index.tsx"]
 }
