@@ -2,7 +2,16 @@
   "name": "react-bus",
   "description": "A global event emitter for react.",
   "version": "3.0.0",
-  "typings": "types/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "dist/index.d.mts",
+      "require": "dist/index.js",
+      "default": "dist/index.mjs"
+    }
+  },
   "author": "Renée Kooi <renee@kooi.me>",
   "bugs": {
     "url": "https://github.com/goto-bus-stop/react-bus/issues"
@@ -15,10 +24,9 @@
     "react": ">=17.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.21.3",
     "react": "^17.0.0",
     "react-test-renderer": "^17.0.0",
-    "rollup": "^2.38.0",
+    "tsup": "^8.1.0",
     "typescript": "^5.0.2"
   },
   "homepage": "https://github.com/goto-bus-stop/react-bus#readme",
@@ -30,14 +38,12 @@
     "react"
   ],
   "license": "MIT",
-  "main": "./dist/react-bus.cjs.js",
-  "module": "./dist/react-bus.es.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goto-bus-stop/react-bus.git"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsup --format=esm --format=cjs --dts index.tsx index.tsx",
     "prepare": "npm run build",
     "test": "node --test"
   }
