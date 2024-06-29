@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install React ${{matrix.react-version}}
-        if: matrix.react-version != '17.x'
+        if: matrix.react-version != '18.x'
         run: npm install -D react@${{matrix.react-version}} react-dom@${{matrix.react-version}}
       - name: Run tests
         run: npm test
