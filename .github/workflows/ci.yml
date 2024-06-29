@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x, 18.x, 20.x, 22.x]
-        react-version: [17.x, 18.x]
+        react-version: [17.x, 18.x, 19.0.0-0]
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
