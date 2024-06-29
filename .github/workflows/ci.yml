@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x, 18.x, 20.x, 22.x]
-        react-version: [17.x, 18.x]
+        react-version: [17.x, 18.x, rc]
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install React ${{matrix.react-version}}
-        if: matrix.react-version != '17.x'
-        run: npm install -D react@${{matrix.react-version}} react-test-renderer@${{matrix.react-version}}
+        if: matrix.react-version != '18.x'
+        run: npm install -D react@${{matrix.react-version}} react-dom@${{matrix.react-version}}
       - name: Run tests
         run: npm test
