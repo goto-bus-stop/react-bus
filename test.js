@@ -3,17 +3,15 @@ var test = require('node:test')
 var assert = require('node:assert')
 var React = require('react')
 var ReactDOM = require('react-dom')
-var env = require('min-react-env')
+require('min-react-env/install')
 var Provider = require('./').Provider
 var useBus = require('./').useBus
 var useListener = require('./').useListener
 
-Object.assign(global, env)
-
 var act = React.act || require('react-dom/test-utils').act
 
 function createTestRenderer () {
-  var div = env.document.createElement('div')
+  var div = document.createElement('div')
   var root
   var reactMajor = parseInt((ReactDOM.version || '16').split('.')[0], 10)
   if (reactMajor >= 18) {

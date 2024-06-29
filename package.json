@@ -24,7 +24,7 @@
     "react": ">=17.0.0"
   },
   "devDependencies": {
-    "min-react-env": "^1.0.1",
+    "min-react-env": "github:goto-bus-stop/min-react-env",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tsup": "^8.1.0",
