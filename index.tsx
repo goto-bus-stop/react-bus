@@ -1,7 +1,8 @@
 import React from 'react'
-import mitt, { type Emitter, type EventType, type Handler } from 'mitt'
+import mitt, { WildcardHandler, type Emitter, type EventType, type Handler } from 'mitt'
 
-export const BusContext = React.createContext<Emitter | null>(null)
+type Events = Record<EventType, unknown>
+export const BusContext = React.createContext<Emitter<Events> | null>(null)
 const P = BusContext.Provider
 
 /** Return the event emitter. */
