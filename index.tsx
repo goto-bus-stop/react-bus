@@ -2,8 +2,7 @@ import React from 'react'
 import mitt, { WildcardHandler, type Emitter, type EventType, type Handler } from 'mitt'
 
 type Events = Record<EventType, unknown>
-export const BusContext = React.createContext<Emitter<Events> | null>(null)
-const P = BusContext.Provider
+const BusContext = React.createContext<Emitter<Events> | null>(null)
 
 /** Return the event emitter. */
 export function useBus () {
@@ -32,5 +31,5 @@ export function useListener (name: EventType, listener: Handler) {
  */
 export function Provider ({ children }: { children: React.ReactNode }) {
   const [bus] = React.useState(() => mitt())
-  return <P value={bus}>{children}</P>
+  return <BusContext.Provider value={bus}>{children}</BusContext.Provider>
 }
