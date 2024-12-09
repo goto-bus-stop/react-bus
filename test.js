@@ -37,11 +37,11 @@ test('emits events on context', function () {
   function onhello () {
     onhello.called = true
   }
-  function Emitter (props) {
+  function Emitter (_props) {
     useBus().emit('hello')
     return h('div')
   }
-  function Listener (props) {
+  function Listener (_props) {
     useBus().on('hello', onhello)
     return h('div')
   }
@@ -66,14 +66,14 @@ test('useListener', function () {
   function onhello () {
     onhello.called = true
   }
-  function Emitter (props) {
+  function Emitter (_props) {
     const bus = useBus()
     React.useEffect(function () {
       bus.emit('hello')
     })
     return h('div')
   }
-  function Listener (props) {
+  function Listener (_props) {
     useListener('hello', onhello)
     return h('div')
   }
