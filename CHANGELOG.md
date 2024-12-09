@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.0
+* Remove `BusContext` export. This is an implementation detail.
+* Update to mitt 3.x.
+* Add React 19 to the test matrix.
+
+Version 3.0.0 also works fine with React 19. You don't need to update to get React 19 support.
+
 ## 3.0.0
 * Add typescript types.
 * Update to mitt 2.x, which requires that browsers support the `Map` API.
