@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.1
+* Fix ESM import resolution. (#38)
+
+Thanks [@barasimumatik](https://github.com/barasimumatik)!
+
 ## 4.0.0
 * Remove `BusContext` export. This is an implementation detail.
 * Update to mitt 3.x.
