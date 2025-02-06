@@ -7,9 +7,9 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "dist/index.d.mts",
-      "require": "dist/index.js",
-      "default": "dist/index.mjs"
+      "types": "./dist/index.d.mts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.mjs"
     }
   },
   "author": "Renée Kooi <renee@kooi.me>",

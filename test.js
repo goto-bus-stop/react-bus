@@ -105,3 +105,7 @@ test('useListener', function () {
 
   renderer.unmount()
 })
+
+test('esm', async () => {
+  await import('react-bus')
+})
