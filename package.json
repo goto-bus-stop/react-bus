@@ -2,16 +2,6 @@
   "name": "react-bus",
   "description": "A global event emitter for react.",
   "version": "4.0.1",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "types": "./dist/index.d.mts",
-      "require": "./dist/index.js",
-      "default": "./dist/index.mjs"
-    }
-  },
   "author": "Renée Kooi <renee@kooi.me>",
   "bugs": {
     "url": "https://github.com/goto-bus-stop/react-bus/issues"
@@ -20,15 +10,20 @@
     "@types/react": "^18.0.8",
     "mitt": "^3.0.1"
   },
-  "peerDependencies": {
-    "react": ">=17.0.0 || ^19.0.0-0"
-  },
   "devDependencies": {
     "min-react-env": "^2.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "tsup": "^8.1.0",
     "typescript": "^5.0.2"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.mjs"
+    }
   },
   "homepage": "https://github.com/goto-bus-stop/react-bus#readme",
   "keywords": [
@@ -39,6 +34,10 @@
     "react"
   ],
   "license": "MIT",
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "react": ">=17.0.0 || ^19.0.0-0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goto-bus-stop/react-bus.git"
@@ -47,5 +46,7 @@
     "build": "tsup --format=esm --format=cjs --dts index.tsx index.tsx",
     "prepare": "npm run build",
     "test": "node --test"
-  }
+  },
+  "sideEffects": false,
+  "typings": "dist/index.d.ts"
 }
