@@ -43,7 +43,7 @@
     "url": "git+https://github.com/goto-bus-stop/react-bus.git"
   },
   "scripts": {
-    "build": "tsdown --format=esm --format=cjs --dts index.tsx index.tsx",
+    "build": "tsdown --format=esm --format=cjs --dts index.tsx",
     "prepare": "npm run build",
     "test": "node --test"
   },
