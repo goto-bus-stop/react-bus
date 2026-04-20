@@ -21,7 +21,7 @@
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.mts",
-      "require": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "default": "./dist/index.mjs"
     }
   },
@@ -34,7 +34,7 @@
     "react"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "peerDependencies": {
     "react": ">=17.0.0 || ^19.0.0-0"
   },
