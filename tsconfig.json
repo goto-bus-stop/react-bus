@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2015"],
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
